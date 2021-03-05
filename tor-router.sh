@@ -8,7 +8,7 @@ WPDIR=$(echo "$PLUGINDIR" | rev | cut -d'/' -f4- | rev)
 
 if [ ! -d "$WPDIR/wp-content" ]; then
 	echo "# ERROR: Wordpress directory not found. Edit this script if you are using a non-default directory structure."
-	return
+	exit
 fi
 
 if [ -f "$WPDIR/wp-content/tor-router-cron" ]; then
@@ -42,7 +42,7 @@ if [ -f "$WPDIR/wp-content/tor-router-cron" ]; then
 				WPSITEURL=$(mysql -h$SQLHOST -D$SQLDB -u$SQLUSER -p$SQLPASS -se "SELECT option_value FROM wp_options WHERE option_name = 'siteurl'")
 				if [ "$WPSITEURL" == "" ]; then
 					echo "# ERROR: Could not connect / retrieve data from the WordPress database. Exiting."
-					return
+					exit
 				else
 					TRTORKEEPALIVE=$(mysql -h$SQLHOST -D$SQLDB -u$SQLUSER -p$SQLPASS -se "SELECT option_value FROM wp_options WHERE option_name = 'torrouter_torkeepalive'")
 					if [ "$TRTORKEEPALIVE" == "1" ]; then
@@ -76,7 +76,7 @@ if [ -f "$WPDIR/wp-content/tor-router-cron" ]; then
 				fi
 			else
 				echo "# ERROR: Could not retrieve SQL credentials from wp-config.php. Exiting."
-				return
+				exit
 			fi
 		fi
 	fi

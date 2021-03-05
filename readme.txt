@@ -3,8 +3,8 @@ Contributors: OnionBazaar
 Donate link: https://onionbazaar.org/?p=donation
 Tags: tor, proxy, socks, connection, proxies, firewall, block
 Requires at least: 2.8
-Tested up to: 5.4.2
-Stable tag: 1.4.0
+Tested up to: 5.7
+Stable tag: 1.4.1
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -28,15 +28,18 @@ For support, head over to the [WordPress Support Forum](https://wordpress.org/su
 2. Activate Tor Router through the 'Plugins' menu in WordPress.
 3. Open `Settings` -> `Tor Router` to setup the plugin.
 4. To route through Tor you need to have it installed on your server (e.g. `apt-get install tor`), use SOCKS Proxy Mode in the Tor Router settings, and set Proxy Host to `localhost` and Proxy Port to `9050` (default)
-5. To enable the Tor KeepAlive feature and the Restart Tor button, set up a cron job to run the script /wp-content/plugins/tor-router/tor-router.sh every minute, e.g: (adjust the path)
-sudo crontab -e
-* * * * * bash /var/www/html/wp-content/plugins/tor-router/tor-router.sh
+5. To enable the Tor KeepAlive feature and the Restart Tor button, set up a cron job to run the script `tor-router.sh` every minute (as root), e.g:
+sudo nano /etc/crontab
+* * * * * root bash /var/www/html/wp-content/plugins/tor-router/tor-router.sh
 
 == Screenshots ==
 
 1. View of Tor Router Settings
 
 == Changelog ==
+
+= 1.4.1 - 2021-03-05 =
+* Compatibility to WordPress 5.7  
 
 = 1.4.0 - 2020-07-25 =
 * Added support for all proxy types, firewall exceptions per plugin, Tor KeepAlive feature and Tor Restart button  

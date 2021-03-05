@@ -3,7 +3,7 @@
 Plugin Name: Tor Router
 Plugin URI: https://wordpress.org/plugins/tor-router/
 Description: Routes outgoing traffic through Tor or any HTTP / SOCKS Proxy.
-Version: 1.4.0
+Version: 1.4.1
 Author: OnionBazaar
 Author URI: http://onionbazaar.org
 License: GNU General Public License v3.0
@@ -11,7 +11,7 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: tor-router
 */
 
-define( 'TORROUTER_VERSION', '1.4.0' );
+define( 'TORROUTER_VERSION', '1.4.1' );
 
 function torrouter_upgrade130to140() {
 	add_option( 'torrouter_version', TORROUTER_VERSION );
@@ -26,7 +26,7 @@ function torrouter_upgrade130to140() {
 		}
 	}
 	else {
-		add_option( 'torrouter_proxymode', '' ); }
+		add_option( 'torrouter_proxymode', '0' ); }
 	
 	add_option( 'torrouter_host', get_option( 'obztorrouter_host' ) );
 	add_option( 'torrouter_port', get_option( 'obztorrouter_port' ) );
